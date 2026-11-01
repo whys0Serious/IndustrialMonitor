@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/解决方案项/">
+    <File Path=".gitignore.txt" />
+  </Folder>
+  <Project Path="IndustrialMonitor.Client/IndustrialMonitor.Client.csproj" />
+  <Project Path="IndustrialMonitor.Core/IndustrialMonitor.Core.csproj" />
+  <Project Path="IndustrialMonitor.Infrastructure/IndustrialMonitor.Infrastructure.csproj" />
+</Solution>
