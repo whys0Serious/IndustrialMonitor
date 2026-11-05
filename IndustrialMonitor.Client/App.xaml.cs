@@ -1,4 +1,5 @@
-﻿using IndustrialMonitor.Infrastructure.Data;
+﻿using IndustrialMonitor.Client.ViewModel;
+using IndustrialMonitor.Infrastructure.Data;
 using IndustrialMonitor.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +29,7 @@ namespace IndustrialMonitor.Client
                     services.AddInfrastructure(ctx.Configuration);
                     //注册主窗口
                     services.AddTransient<MainWindow>();
+                    services.AddTransient<MainViewModel>();
                 }).Build();
         }
 
@@ -44,6 +46,7 @@ namespace IndustrialMonitor.Client
                     await dbContext.Database.EnsureCreatedAsync();
                 }
             }
+            
             var mainWindow = _host.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();
             

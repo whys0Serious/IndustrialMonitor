@@ -24,6 +24,11 @@ namespace IndustrialMonitor.Infrastructure.Extensions
             var modbusPort = int.TryParse(configuration["Plc:Port"], out var port) ? port : 502;
             services.AddSingleton<IPlcService>(new NModbusService(modbusIp, modbusPort));
 
+            //注册PLC轮询服务
+            services.AddHostedService<PlcPollingService>();
+            //注册数据解析服务
+            services.AddSingleton<IDataParser, DataParser>();
+
             //注册sqlite数据库上下文工厂
             var connectionString = configuration.GetConnectionString("DefaultConnection") ?? "Data Source=industrial_monitor.db";
             services.AddDbContextFactory<AppDbContext>(options=>options.UseSqlite(connectionString));
